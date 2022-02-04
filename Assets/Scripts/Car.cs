@@ -10,7 +10,13 @@ public class Car : MonoBehaviour
     [SerializeField] private float turnSpeed = 200f;
 
     private int steerValue;
- 
+    private int _health;
+
+    void Start()
+    {
+        _health = 5;
+    }
+
     void Update()
     {
         speed += speedGainPerSecond * Time.deltaTime;
@@ -28,5 +34,11 @@ public class Car : MonoBehaviour
     public void Steer(int value)
     {
         steerValue = value;
+    }
+
+    public void Hurt(int damage)
+    {
+        _health -= damage;
+        Debug.Log("Health:" + _health);
     }
 }
