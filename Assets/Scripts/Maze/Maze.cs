@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MapLocation       
 {
+
+
+   
+
     public int x;
     public int z;
 
@@ -16,7 +20,13 @@ public class MapLocation
 
 public class Maze : MonoBehaviour
 {
-   public List<MapLocation> directions = new List<MapLocation>() {
+
+    //Сериализованная переменная для связи с объектом-шаблоном 
+    [SerializeField] private GameObject enemyPrefab;
+    //Закрытая переменная для слежения за экземпляром врага в сцене
+    private GameObject _enemy;
+
+    public List<MapLocation> directions = new List<MapLocation>() {
                                             new MapLocation(1,0),
                                             new MapLocation(0,1),
                                             new MapLocation(-1,0),
@@ -32,6 +42,7 @@ public class Maze : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         InitialiseMap();
         Generate();
         DrawMap();
@@ -66,11 +77,31 @@ public class Maze : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(x * scale, 0, z * scale);
                     //PrimitiveType.Cube
-                   // Instantiate(prefab, pos, Quaternion.identity);
+                    // Instantiate(prefab, pos, Quaternion.identity);
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    //wall.AddComponent<MeshRenderer>();
+                    wall.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
                     wall.transform.localScale = new Vector3(scale, scale, scale);
                     wall.transform.position = pos;
                     wall.tag = "Obstacle";
+                }
+            }
+
+        for (int z = 0; z < depth; z++)
+            for (int x = 0; x < width; x++)
+            {
+                if (map[x, z] == 0)
+                {
+
+                   
+                    Vector3 pos = new Vector3(x * scale, 1, z * scale);
+                    if (pos == new Vector3(50, 1, 50)) { continue;}
+                    _enemy = Instantiate(enemyPrefab) as GameObject;
+
+                    _enemy.tag = "Obstacle";
+                    _enemy.transform.position = pos;
+                    float angle = Random.Range(0, 360);
+                    _enemy.transform.Rotate(0, angle, 0); 
                 }
             }
     }

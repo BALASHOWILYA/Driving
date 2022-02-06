@@ -9,18 +9,20 @@ public class SceneController : MonoBehaviour
     //Закрытая переменная для слежения за экземпляром врага в сцене
     private GameObject _enemy;
 
-    // Update is called once per frame
-    void Update()
+    public void StartEnemy(Vector3 pos)
     {
-        int ManyEnemy = Random.Range(0, 10);
+        int ManyEnemy = 1;
+        //Random.Range(0, 10);
         //Порождаем нового врага, только если враги в сцене отсутствуют
-        if (_enemy != null) { return; }
+        //if (_enemy != null) { return; }
+
         //Метод, копирующий объект-шаблон
         for (int i = 0; i < ManyEnemy; i++)
         {
-            
+
             _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.transform.position = new Vector3(0, 1, 0);
+            _enemy.tag = "Obstacle";
+            _enemy.transform.position = pos;
             float angle = Random.Range(0, 360);
             _enemy.transform.Rotate(0, angle, 0);
         }
