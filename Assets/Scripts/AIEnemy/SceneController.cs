@@ -8,10 +8,33 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     //Закрытая переменная для слежения за экземпляром врага в сцене
     private GameObject _enemy;
+    private Vector3 _pos;
+    private float _angle;
 
-    public void StartEnemy(Vector3 pos)
+    public SceneController(GameObject enemy, Vector3 pos, float angle )
     {
-        int ManyEnemy = 1;
+        _enemy = enemy;
+        _pos = pos;
+        _angle = angle;
+    }
+
+    public SceneController(Vector3 pos)
+    {
+        _pos = pos;
+    }
+
+    public void CreateEnemies()
+    {
+        _enemy = Instantiate(enemyPrefab) as GameObject;
+        _enemy.transform.position = _pos;
+        float angle = Random.Range(0, 360);
+        _enemy.transform.Rotate(0, angle, 0);
+        
+    }
+
+    public void StartEnemy()
+    {
+      int ManyEnemy = 3;
         //Random.Range(0, 10);
         //Порождаем нового врага, только если враги в сцене отсутствуют
         //if (_enemy != null) { return; }
@@ -19,12 +42,9 @@ public class SceneController : MonoBehaviour
         //Метод, копирующий объект-шаблон
         for (int i = 0; i < ManyEnemy; i++)
         {
-
-            _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.tag = "Obstacle";
-            _enemy.transform.position = pos;
-            float angle = Random.Range(0, 360);
-            _enemy.transform.Rotate(0, angle, 0);
+            _enemy.tag = "Enemy";
+            Instantiate(_enemy, _pos, Quaternion.identity);
         }
+      //  }
     }
 }

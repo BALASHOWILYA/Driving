@@ -93,17 +93,26 @@ public class Maze : MonoBehaviour
                 if (map[x, z] == 0)
                 {
 
-                   
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
                     if (pos == new Vector3(50, 1, 50)) { continue;}
-                    _enemy = Instantiate(enemyPrefab) as GameObject;
+                    CreateEnemies(pos);
 
-                    _enemy.tag = "Obstacle";
-                    _enemy.transform.position = pos;
-                    float angle = Random.Range(0, 360);
-                    _enemy.transform.Rotate(0, angle, 0); 
+                    
                 }
             }
+    }
+
+    public void CreateEnemies(Vector3 pos)
+    {
+        int ManyEnemy = 3;
+        for (int i = 0; i < ManyEnemy; i++)
+        {
+            _enemy = Instantiate(enemyPrefab) as GameObject;
+            _enemy.transform.position = pos;
+            float angle = Random.Range(0, 360);
+            _enemy.transform.Rotate(0, angle, 0);
+            _enemy.tag = "Enemy";
+        }
     }
 
     public int CountSquareNeighbours(int x, int z)

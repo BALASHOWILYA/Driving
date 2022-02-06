@@ -12,7 +12,7 @@ public class Car : MonoBehaviour
     private int _max = 20;
     private int _steerValue;
     private int _health;
-
+    private int _cure = 1;
     void Start()
     {
         _health = 5;
@@ -39,17 +39,25 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Obstacle"))
-        SceneManager.LoadScene(0);
+        if (other.CompareTag("Obstacle")) { SceneManager.LoadScene(0); }
+        if (other.CompareTag("Enemy")) {
+            Cure(_cure);
+            other.gameObject.SetActive(false);
+        }
     }
 
     public void Steer(int value)
     {
         _steerValue = value;
     }
-
+    public void Cure(int cure)
+    {
+        _health += cure;
+        Debug.Log("Health:" + _health);
+    }
     public void Hurt(int damage)
     {
+        
         _health -= damage;
         Debug.Log("Health:" + _health);
     }
