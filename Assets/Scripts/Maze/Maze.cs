@@ -76,10 +76,7 @@ public class Maze : MonoBehaviour
                 if (map[x, z] == 1)
                 {
                     Vector3 pos = new Vector3(x * scale, 0, z * scale);
-                    //PrimitiveType.Cube
-                    // Instantiate(prefab, pos, Quaternion.identity);
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    //wall.AddComponent<MeshRenderer>();
                     wall.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
                     wall.transform.localScale = new Vector3(scale, scale, scale);
                     wall.transform.position = pos;
@@ -112,6 +109,7 @@ public class Maze : MonoBehaviour
             float angle = Random.Range(0, 360);
             _enemy.transform.Rotate(0, angle, 0);
             _enemy.tag = "Enemy";
+            
         }
     }
 
