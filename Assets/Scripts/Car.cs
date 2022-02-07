@@ -24,11 +24,21 @@ public class Car : MonoBehaviour
 
         if (_max < speed) {
 
+            if (_health <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+
             transform.Rotate(0f, _steerValue * turnSpeed * Time.deltaTime, 0f);
 
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             return; }
+
+        if(_health <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
 
         speed += speedGainPerSecond * Time.deltaTime;
 
