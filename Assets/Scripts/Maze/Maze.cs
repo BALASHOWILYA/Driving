@@ -101,7 +101,7 @@ public class Maze : MonoBehaviour
 
     public void CreateEnemies(Vector3 pos)
     {
-        int ManyEnemy = 3;
+        int ManyEnemy = Random.Range(0,6);
         for (int i = 0; i < ManyEnemy; i++)
         {
             _enemy = Instantiate(enemyPrefab) as GameObject;

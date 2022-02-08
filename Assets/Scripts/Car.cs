@@ -1,5 +1,5 @@
 using System.Collections;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +8,8 @@ public class Car : MonoBehaviour
     [SerializeField] private float speed = 0;
     [SerializeField] private float speedGainPerSecond = 0.3f;
     [SerializeField] private float turnSpeed = 200f;
-    public ParticleSystem particleSystem;
+    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private TMP_Text healthText;
 
     private int _max = 20;
     private int _steerValue;
@@ -17,6 +18,7 @@ public class Car : MonoBehaviour
     void Start()
     {
         _health = 5;
+        healthText.text ="Health " + Mathf.FloorToInt(5).ToString();
     }
 
     void Update()
@@ -58,7 +60,7 @@ public class Car : MonoBehaviour
             other.transform.parent = EnemyParticle.transform;
             other.gameObject.SetActive(false);
             StartCoroutine(StopParticle(EnemyParticle));
-            
+             
 
         }
     }
@@ -77,12 +79,12 @@ public class Car : MonoBehaviour
     public void Cure(int cure)
     {
         _health += cure;
-        Debug.Log("Health:" + _health);
+        healthText.text = "Health " + Mathf.FloorToInt(_health).ToString();
     }
     public void Hurt(int damage)
     {
         
         _health -= damage;
-        Debug.Log("Health:" + _health);
+        healthText.text = "Health " + Mathf.FloorToInt(_health).ToString();
     }
 }

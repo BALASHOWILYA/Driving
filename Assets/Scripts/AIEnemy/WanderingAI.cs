@@ -39,11 +39,13 @@ public class WanderingAI : MonoBehaviour
                 if(_fireball != null) { return; }
                 
                 _fireball = Instantiate(fireballPrefab) as GameObject;
+                _fireball.AddComponent<MeshRenderer>().material.color = Color.yellow;
                 //Поместим огненый шар перед врагом и нацелим в направлении его движения
                 _fireball.transform.position =
                     transform.TransformPoint(Vector3.forward * 1.5f);
 
                 _fireball.transform.rotation = transform.rotation;
+             
             } 
             else if (hit.distance < obstacleRange)
             {

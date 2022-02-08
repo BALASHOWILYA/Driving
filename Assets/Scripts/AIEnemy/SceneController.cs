@@ -17,12 +17,6 @@ public class SceneController : MonoBehaviour
         _pos = pos;
         _angle = angle;
     }
-
-    public SceneController(Vector3 pos)
-    {
-        _pos = pos;
-    }
-
     public void CreateEnemies()
     {
         _enemy = Instantiate(enemyPrefab) as GameObject;
