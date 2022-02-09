@@ -31,12 +31,13 @@ public class Maze : MonoBehaviour
                                             new MapLocation(0,1),
                                             new MapLocation(-1,0),
                                             new MapLocation(0,-1) };
-
+    
     public int width = 30; //x length
     public int depth = 30; //z length
     public byte[,] map;
     public int scale = 6;
-    private bool boss = true;
+    private bool boss = false;
+    private bool myCar = false;
 
     //public GameObject prefab; 
 
@@ -93,14 +94,22 @@ public class Maze : MonoBehaviour
                 {
                    
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
-                    if (pos == new Vector3(50, 1, 50)) { continue;}
-                    CreateEnemies(pos);
-
-                    if (boss)
+                    if(pos == null) { continue; }
+                    if (!myCar)
                     {
 
+                        Car myCar = new Car();
+                        myCar.CreateMyCar(pos);
+                        this.myCar = true;
+                        continue;
+                    }
+
+                    CreateEnemies(pos);
+          
+                    if (!boss)
+                    {
                         CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
-                        boss = false;
+                        boss = true;
                     }
                    
 
