@@ -5,15 +5,18 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
-    private List<GameObject> _enemy;
-    public List<GameObject> CreateEnemies(Vector3 pos)
+    private GameObject _enemy;
+    public void CreateEnemies(Vector3 pos)
     {
         int ManyEnemy = 20;
         for (int i = 0; i < ManyEnemy; i++)
         {
+            _enemy = Instantiate(enemyPrefab) as GameObject;
+            _enemy.transform.position = pos;
             float angle = Random.Range(0, 360);
-            _enemy.Add(Instantiate(enemyPrefab, pos, Quaternion.Euler(0,angle,0) ) as GameObject); 
+            _enemy.transform.Rotate(0, angle, 0);
+            _enemy.tag = "Enemy";
+
         }
-        return _enemy;
     }
 }
