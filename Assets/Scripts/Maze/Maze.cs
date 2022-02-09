@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapLocation       
 {
+
+
+   
 
     public int x;
     public int z;
@@ -16,23 +20,28 @@ public class MapLocation
 
 public class Maze : MonoBehaviour
 {
-    public int width = 30; //x length
-    public int depth = 30; //z length
-    public byte[,] map;
-    public int scale = 6;
+
+    //Сериализованная переменная для связи с объектом-шаблоном 
+    [SerializeField] private GameObject enemyPrefab;
+    //Закрытая переменная для слежения за экземпляром врага в сцене
+    private GameObject _enemy;
+
     public List<MapLocation> directions = new List<MapLocation>() {
                                             new MapLocation(1,0),
                                             new MapLocation(0,1),
                                             new MapLocation(-1,0),
                                             new MapLocation(0,-1) };
-   
-    [SerializeField] private GameObject enemyPrefab;
-   
-    private bool boss = false;
-    private int middle = 15;
-    private int startMaze = 2;
-    private GameObject _enemy;
 
+    public int width = 30; //x length
+    public int depth = 30; //z length
+    public byte[,] map;
+    public int scale = 6;
+    private bool boss = true;
+
+    //public GameObject prefab; 
+
+
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -47,7 +56,6 @@ public class Maze : MonoBehaviour
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
-                
                     map[x, z] = 1;     //1 = wall  0 = corridor
             }
     }
@@ -69,8 +77,7 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 1)
                 {
-                   
-                    Vector3 pos = new Vector3(x * scale, 6, z * scale);
+                    Vector3 pos = new Vector3(x * scale, 0, z * scale);
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     wall.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
                     wall.transform.localScale = new Vector3(scale, scale, scale);
@@ -84,15 +91,16 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-                    if (x == startMaze && z == startMaze) continue;
+                   
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
-                    if(Random.Range(0, 10) == 1)
+                    if (pos == new Vector3(50, 1, 50)) { continue;}
                     CreateEnemies(pos);
 
-                    if (!boss && x>= middle && z>= middle)
+                    if (boss)
                     {
-                        CreateBigBoss(new Vector3(x*scale, 4.5f, z* scale));
-                        boss = true;
+
+                        CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
+                        boss = false;
                     }
                    
 
@@ -104,7 +112,7 @@ public class Maze : MonoBehaviour
 
     public void CreateEnemies(Vector3 pos)
     {
-        int ManyEnemy = 20;
+        int ManyEnemy = Random.Range(0,6);
         for (int i = 0; i < ManyEnemy; i++)
         {
             _enemy = Instantiate(enemyPrefab) as GameObject;

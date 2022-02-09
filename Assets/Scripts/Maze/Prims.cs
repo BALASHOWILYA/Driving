@@ -10,6 +10,7 @@ public class Prims : Maze
         int z = 2;
 
         map[x, z] = 0;
+
         List<MapLocation> walls = new List<MapLocation>();
         walls.Add(new MapLocation(x + 1, z));
         walls.Add(new MapLocation(x - 1, z));
