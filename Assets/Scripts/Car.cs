@@ -72,11 +72,6 @@ public class Car : MonoBehaviour
 
     }
 
-    public void CreatePlayer(int x, int z)
-    {
-        //this.gameObject.transform.position= new Vector3(x, 1 , z);
-    }
-
     public void Steer(int value)
     {
         _steerValue = value;

@@ -37,7 +37,6 @@ public class Maze : MonoBehaviour
     public byte[,] map;
     public int scale = 6;
     private bool boss = true;
-    private bool player = true;
 
     //public GameObject prefab; 
 
@@ -92,18 +91,9 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-
                    
-                    Vector3 pos = new Vector3(x, 1, z);
-                  ///  if (player)
-                  //  {
-                 //       Car myPlayer = new Car();
-                //        myPlayer.CreatePlayer(x , z);
-                //        player = false;
-                 //       continue;  
-                //    }
-                   
-                    if(pos == new Vector3(50, 1, 50)) { continue; }
+                    Vector3 pos = new Vector3(x * scale, 1, z * scale);
+                    if (pos == new Vector3(50, 1, 50)) { continue;}
                     CreateEnemies(pos);
 
                     if (boss)
@@ -119,8 +109,6 @@ public class Maze : MonoBehaviour
 
         
     }
-
-    
 
     public void CreateEnemies(Vector3 pos)
     {
