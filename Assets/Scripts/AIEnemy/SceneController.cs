@@ -28,7 +28,7 @@ public class SceneController : MonoBehaviour
 
     public void StartEnemy()
     {
-       int ManyEnemy = 3;
+      int ManyEnemy = 3;
         //Random.Range(0, 10);
         //Порождаем нового врага, только если враги в сцене отсутствуют
         //if (_enemy != null) { return; }
@@ -39,6 +39,6 @@ public class SceneController : MonoBehaviour
             _enemy.tag = "Enemy";
             Instantiate(_enemy, _pos, Quaternion.identity);
         }
-      
+      //  }
     }
 }
