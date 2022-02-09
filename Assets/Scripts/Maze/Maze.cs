@@ -32,7 +32,8 @@ public class Maze : MonoBehaviour
     private int middle = 15;
     private int startMaze = 2;
     private GameObject _enemy;
-
+    private Enemies enemies = new Enemies();
+    private List<GameObject> _enemyList;
     void Start()
     {
         
@@ -86,8 +87,9 @@ public class Maze : MonoBehaviour
                 {
                     if (x == startMaze && z == startMaze) continue;
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
-                    if(Random.Range(0, 10) == 1)
-                    CreateEnemies(pos);
+                    if (Random.Range(0, 10) == 1)
+                        
+                    enemies.CreateEnemies(pos);
 
                     if (!boss && x>= middle && z>= middle)
                     {
@@ -102,19 +104,7 @@ public class Maze : MonoBehaviour
         
     }
 
-    public void CreateEnemies(Vector3 pos)
-    {
-        int ManyEnemy = 20;
-        for (int i = 0; i < ManyEnemy; i++)
-        {
-            _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.transform.position = pos;
-            float angle = Random.Range(0, 360);
-            _enemy.transform.Rotate(0, angle, 0);
-            _enemy.tag = "Enemy";
-            
-        }
-    }
+    
 
     public void CreateBigBoss(Vector3 pos)
     {
