@@ -15,11 +15,6 @@ public class Car : MonoBehaviour
     private int _steerValue;
     private int _health;
     private int _cure = 1;
-    [SerializeField] private GameObject myCar;
-    private GameObject _car;
-    
-       
-    
     void Start()
     {
         _health = 5;
@@ -77,12 +72,6 @@ public class Car : MonoBehaviour
 
     }
 
-    public void CreateMyCar(Vector3 pos)
-    {
-        _car = Instantiate(myCar) as GameObject;
-        _car.transform.position = pos;
-        _car.transform.rotation = Quaternion.identity;
-    }
     public void Steer(int value)
     {
         _steerValue = value;
