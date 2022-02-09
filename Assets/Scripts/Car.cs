@@ -71,7 +71,6 @@ public class Car : MonoBehaviour
         particle.gameObject.SetActive(false);
 
     }
-
     public void Steer(int value)
     {
         _steerValue = value;
