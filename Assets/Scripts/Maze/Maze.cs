@@ -26,13 +26,12 @@ public class Maze : MonoBehaviour
                                             new MapLocation(-1,0),
                                             new MapLocation(0,-1) };
    
-    [SerializeField] private static GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
    
     private bool boss = false;
     private int middle = 15;
     private int startMaze = 2;
     private GameObject _enemy;
-    Enemies enemies = new Enemies(enemyPrefab);
 
     void Start()
     {
@@ -85,11 +84,9 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-
                     if (x == startMaze && z == startMaze) continue;
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
                     if(Random.Range(0, 10) == 1)
-
                     CreateEnemies(pos);
 
                     if (!boss && x>= middle && z>= middle)

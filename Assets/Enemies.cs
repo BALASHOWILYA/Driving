@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    [SerializeField] protected GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
     private GameObject _enemy;
-    private Vector3 _pos;
-    public Enemies(GameObject enemy)
-    {
-        _enemy = enemy;
-       
-    }
     public void CreateEnemies(Vector3 pos)
     {
         int ManyEnemy = 20;
