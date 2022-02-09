@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Car : MonoBehaviour
 {
     [SerializeField] private float speed = 0;
-    [SerializeField] private float speedGainPerSecond = 0.3f;
+    [SerializeField] private float speedGainPerSecond = 1f;
     [SerializeField] private float turnSpeed = 200f;
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private TMP_Text healthText;
 
-    private int _max = 20;
+    private int _max = 15;
     private int _steerValue;
     private int _health;
     private int _cure = 1;

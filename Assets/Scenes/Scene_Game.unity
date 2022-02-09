@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  speedGainPerSecond: 0.3
+  speedGainPerSecond: 1
   turnSpeed: 200
   particleSystem: {fileID: 938850021352370413, guid: 179ffe78925723746aaff27c4a9840c3, type: 3}
   healthText: {fileID: 1990001155}
@@ -939,7 +939,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 35
+  orthographic size: 80
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

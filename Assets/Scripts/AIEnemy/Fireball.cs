@@ -38,13 +38,17 @@ public class Fireball : MonoBehaviour
     {
         Color c = this.gameObject.GetComponent<MeshRenderer>().material.color;
         
-        for (float alpha = 1f, scale = 1f; alpha >= 0; alpha -= 0.5f, scale += 0.5f)
+        for (float alpha = 1f, scale = 1f; alpha >= 0; alpha -= 0.99f, scale += 0.5f)
         {
             
            transform.localScale = new Vector3(scale, scale, scale);
+            
             c.a = alpha;
-           this.gameObject.GetComponent<MeshRenderer>().material.color = c;
-            yield return new WaitForSeconds(.0001f);
+          
+          
+            this.gameObject.GetComponent<MeshRenderer>().material.color = c;
+            yield return new WaitForSeconds(.00001f);
+            
         }
         Destroy(this.gameObject); 
     }

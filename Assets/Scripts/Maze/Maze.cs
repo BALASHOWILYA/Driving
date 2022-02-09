@@ -36,8 +36,10 @@ public class Maze : MonoBehaviour
     public int depth = 30; //z length
     public byte[,] map;
     public int scale = 6;
+    private bool boss = true;
+
     //public GameObject prefab; 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -89,14 +91,23 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-
+                   
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
                     if (pos == new Vector3(50, 1, 50)) { continue;}
                     CreateEnemies(pos);
 
-                    
+                    if (boss)
+                    {
+
+                        CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
+                        boss = false;
+                    }
+                   
+
                 }
             }
+
+        
     }
 
     public void CreateEnemies(Vector3 pos)
@@ -111,6 +122,17 @@ public class Maze : MonoBehaviour
             _enemy.tag = "Enemy";
             
         }
+    }
+
+    public void CreateBigBoss(Vector3 pos)
+    {
+        _enemy = Instantiate(enemyPrefab) as GameObject;
+        _enemy.transform.position = pos;
+        _enemy.transform.localScale = new Vector3(10, 10, 10);
+        float angle = Random.Range(0, 360);
+        _enemy.transform.Rotate(0, angle, 0);
+       
+
     }
 
     public int CountSquareNeighbours(int x, int z)
