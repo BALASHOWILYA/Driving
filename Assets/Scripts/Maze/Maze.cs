@@ -36,7 +36,9 @@ public class Maze : MonoBehaviour
     public int depth = 30; //z length
     public byte[,] map;
     public int scale = 6;
-    private bool boss = true;
+    private bool boss = false;
+    private int middle = 15;
+    private int PlayerPosition = 2;
 
     //public GameObject prefab; 
 
@@ -91,16 +93,17 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-                   
+                    if (x == PlayerPosition && z == PlayerPosition) { continue; }
+
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
-                    if (pos == new Vector3(50, 1, 50)) { continue;}
+
                     CreateEnemies(pos);
 
-                    if (boss)
+                    if (!boss && x >= middle & z >= middle)
                     {
 
                         CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
-                        boss = false;
+                        boss = true;
                     }
                    
 
