@@ -40,7 +40,7 @@ public class Maze : MonoBehaviour
     private int middle = 15;
     private int PlayerPosition = 2;
 
-    //public GameObject prefab; 
+    public GameObject straight; 
 
 
     // Start is called before the first frame update
@@ -93,16 +93,17 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 0)
                 {
-                    if (x == PlayerPosition && z == PlayerPosition) { continue; }
+                   // if (x == PlayerPosition && z == PlayerPosition) { continue; }
 
                     Vector3 pos = new Vector3(x * scale, 1, z * scale);
+                    
 
-                    CreateEnemies(pos);
+                   // CreateEnemies(pos);
 
                     if (!boss && x >= middle & z >= middle)
                     {
 
-                        CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
+                   //     CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
                         boss = true;
                     }
                    
@@ -113,21 +114,19 @@ public class Maze : MonoBehaviour
         
     }
 
-    public void CreateEnemies(Vector3 pos)
+    public  void CreateEnemies(Vector3 pos)
     {
         int ManyEnemy = Random.Range(0,6);
         for (int i = 0; i < ManyEnemy; i++)
         {
-            _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.transform.position = pos;
             float angle = Random.Range(0, 360);
-            _enemy.transform.Rotate(0, angle, 0);
+            _enemy = Instantiate(enemyPrefab, pos, Quaternion.Euler(0, angle,0)) as GameObject;
             _enemy.tag = "Enemy";
             
         }
     }
 
-    public void CreateBigBoss(Vector3 pos)
+    public  void CreateBigBoss(Vector3 pos)
     {
         _enemy = Instantiate(enemyPrefab) as GameObject;
         _enemy.transform.position = pos;
