@@ -86,32 +86,38 @@ public class Maze : MonoBehaviour
                     wall.transform.position = pos;
                     wall.tag = "Obstacle";
                 }
-            }
-
-        for (int z = 0; z < depth; z++)
-            for (int x = 0; x < width; x++)
-            {
-                if (map[x, z] == 0)
+                else
                 {
-                   // if (x == PlayerPosition && z == PlayerPosition) { continue; }
-
-                    Vector3 pos = new Vector3(x * scale, 1, z * scale);
-                    
-
-                   // CreateEnemies(pos);
-
-                    if (!boss && x >= middle & z >= middle)
-                    {
-
-                   //     CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
-                        boss = true;
-                    }
-                   
-
+                   Vector3 pos = new Vector3(x * scale, 1, z * scale);
+                    Instantiate(straight, pos, Quaternion.identity);
+                   //CreateEnemies(pos);
                 }
             }
 
-        
+        /*  for (int z = 0; z < depth; z++)
+              for (int x = 0; x < width; x++)
+              {
+                  if (map[x, z] == 0)
+                  {
+                     // if (x == PlayerPosition && z == PlayerPosition) { continue; }
+
+                      Vector3 pos = new Vector3(x * scale, 1, z * scale);
+
+
+                      CreateEnemies(pos);
+
+                      if (!boss && x >= middle & z >= middle)
+                      {
+
+                     //     CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
+                          boss = true;
+                      }
+
+
+                  }
+              }*/
+
+
     }
 
     public  void CreateEnemies(Vector3 pos)
