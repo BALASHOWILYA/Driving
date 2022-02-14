@@ -195,12 +195,16 @@ MonoBehaviour:
   width: 30
   depth: 30
   scale: 25
+<<<<<<< HEAD
   straight: {fileID: 2642822048229292070, guid: 31cf31e8098fe4c4594eca84d294ff46, type: 3}
   cornerStraight: {fileID: 4807170200055749791, guid: 1e219418ada9fa145bb82e2be3972c03, type: 3}
   cornerCurved: {fileID: 456475785477550179, guid: 021eebcd7ba166a4bbc1b356b993a3a7, type: 3}
   tIntersection: {fileID: 4624739210839331433, guid: 1015e63f3fc1f3845bc5a42719ca30a3, type: 3}
   crossRoad: {fileID: 501910274225302470, guid: 678c558af12032d40ab87b26cee92dbb, type: 3}
   endPiece: {fileID: 1578121879173979644, guid: 69d1442d2aa32e04abeb10413b1cb501, type: 3}
+=======
+  straight: {fileID: 0}
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
 --- !u!114 &68561998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1768606788610258, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_RootOrder
@@ -1311,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_LocalScale.z

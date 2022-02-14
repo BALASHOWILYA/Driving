@@ -34,7 +34,11 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
+<<<<<<< HEAD
     globalScale: 8.35
+=======
+    globalScale: 2
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -85,7 +89,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
     globalScale: 8.35
+=======
+    globalScale: 2
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

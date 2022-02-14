@@ -234,6 +234,7 @@ public class Maze : MonoBehaviour
                     piecePlaces[x, z].model = go;
 
                 }
+<<<<<<< HEAD
                 else if (Search2D(x, z, new int[] { 1, 0, 1, 0, 0, 0, 1, 0, 1 })) //crossroad
                 {
                     GameObject go = Instantiate(crossroad);
@@ -463,6 +464,34 @@ public class Maze : MonoBehaviour
                     doorway.transform.Translate(0, 0, 0.01f);
                 }
             }
+=======
+            }
+
+        for (int z = 0; z < depth; z++)
+            for (int x = 0; x < width; x++)
+            {
+                if (map[x, z] == 0)
+                {
+                   // if (x == PlayerPosition && z == PlayerPosition) { continue; }
+
+                    Vector3 pos = new Vector3(x * scale, 1, z * scale);
+                    
+
+                   // CreateEnemies(pos);
+
+                    if (!boss && x >= middle & z >= middle)
+                    {
+
+                   //     CreateBigBoss(new Vector3(x * scale, 4.5f, z * scale));
+                        boss = true;
+                    }
+                   
+
+                }
+            }
+
+        
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
     }
 
     bool top;
