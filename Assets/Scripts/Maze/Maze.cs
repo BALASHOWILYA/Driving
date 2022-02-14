@@ -226,6 +226,7 @@ public class Maze : MonoBehaviour
                     piecePlaces[x, z].piece = PieceType.Vertical_Straight;
                     piecePlaces[x, z].model = go;
                 }
+<<<<<<< HEAD
                 else if (Search2D(x, z, new int[] { 5, 1, 5, 0, 0, 0, 5, 1, 5 })) //horizontal straight
                 {
                     Vector3 pos = new Vector3(x * scale, 0, z * scale);
@@ -467,6 +468,10 @@ public class Maze : MonoBehaviour
 =======
             }
 
+=======
+            }
+
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
@@ -491,6 +496,9 @@ public class Maze : MonoBehaviour
             }
 
         
+<<<<<<< HEAD
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
+=======
 >>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
     }
 

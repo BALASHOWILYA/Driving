@@ -35,7 +35,11 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     globalScale: 8.35
+=======
+    globalScale: 2
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
 =======
     globalScale: 2
 >>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
@@ -90,7 +94,11 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     globalScale: 8.35
+=======
+    globalScale: 2
+>>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
 =======
     globalScale: 2
 >>>>>>> parent of 0d5166e... Addded right size for maze straight prefabs
